@@ -58,7 +58,7 @@ class AppServiceProvider extends ServiceProvider
 
         \Illuminate\Pagination\Paginator::useBootstrap();
 
-        Schema::defaultStringLength(191);
+        Schema::defaultStringLength(255);
         Asset::observe(AssetObserver::class);
         User::observe(UserObserver::class);
         Accessory::observe(AccessoryObserver::class);

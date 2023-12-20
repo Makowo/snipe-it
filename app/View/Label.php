@@ -80,6 +80,8 @@ class Label implements View
             ->filter(fn($fieldString) => !empty($fieldString))
             ->map(fn($fieldString) => Field::fromString($fieldString));
 
+	    // dump($fieldDefinitions);
+
         // Prepare data
         $data = $assets
             ->map(function ($asset) use ($template, $settings, $fieldDefinitions) {

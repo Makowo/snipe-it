@@ -486,6 +486,7 @@ class SettingsController extends Controller
         if ($setting->save()) {
             return redirect()->route('settings.index')
                 ->with('success', trans('admin/settings/message.update.success'));
+
         }
 
         return redirect()->back()->withInput()->withErrors($setting->getErrors());
@@ -830,6 +831,7 @@ class SettingsController extends Controller
         if (is_null($setting = Setting::getSettings())) {
             return redirect()->to('admin')->with('error', trans('admin/settings/message.update.error'));
         }
+
         $setting->label2_enable = $request->input('label2_enable');
         $setting->label2_template = $request->input('label2_template');
         $setting->label2_title = $request->input('label2_title');
@@ -852,8 +854,6 @@ class SettingsController extends Controller
         $setting->labels_pageheight = $request->input('labels_pageheight');
         $setting->labels_display_company_name = $request->input('labels_display_company_name', '0');
         $setting->labels_display_company_name = $request->input('labels_display_company_name', '0');
-
-
 
         if ($request->filled('labels_display_name')) {
             $setting->labels_display_name = 1;
@@ -886,6 +886,8 @@ class SettingsController extends Controller
         }
 
         if ($setting->save()) {
+		// dump($setting);
+		// dd($request);
             return redirect()->route('settings.labels.index')
                 ->with('success', trans('admin/settings/message.update.success'));
         }
